@@ -330,7 +330,11 @@ const jsonContentDiv = document.getElementById('jsonContent');
 
  function posi(){
   jsonContentDiv.innerHTML=''
- fetch('http://localhost:3001/formComplet')
+  var url = (window.location.hostname.includes('localhost'))
+    ? 'http://localhost:8080'
+    : 'https://trivial-paises.onrender.com';//acá va la url q pongás vos
+
+ fetch(url)
   .then(response => response.json())
   .then(data => {
 
