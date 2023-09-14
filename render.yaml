@@ -2,4 +2,4 @@ services:
 - name: backend
   env: node
   buildCommand: node install
-    startCommand: node backend/app.js
+    startCommand: node app.js
