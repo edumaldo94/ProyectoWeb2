@@ -112,7 +112,11 @@ fs.readFile('baseDatos.json', 'utf8', (err, data) => {
 })
 
 
-app.listen(port, ()=>{
-console.log(`estoy ejecutando http://localhost:${port}`)
 
-})
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+  });
+  
+  app.listen(process.env.PORT || port, () => {
+    console.log('Server is running');
+  });
