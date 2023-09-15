@@ -246,22 +246,21 @@ if (tiempoFinal) {
     const registrarButton = document.getElementById("registrar");
     const nomb=document.getElementById("nombre")
     let usu;
-    registrarButton.addEventListener("submit", handleClick);
-    registrarButton.addEventListener("touchstart", handleClick);
-    
-    async function handleClick(event) {
-     
-      event.preventDefault();
-      await validar().then(resq => {
-        if (resq) {
-          formularioDiv.style.display = "none";
-          contFF.style.display = "none";
-          contenidoDiv.style.display = "block";
-          tiempoInicio = new Date().getTime();
-          intervaloTiempo = 0;
-        }
-      });
-    }
+    document.getElementById("formulario").addEventListener("submit", async (event) => {
+      event.preventDefault()
+     alert("hola")
+      validar().then(resq =>{
+      if(resq){
+      formularioDiv.style.display = "none";
+      contFF.style.display = "none";
+
+      contenidoDiv.style.display = "block";
+      
+      tiempoInicio = new Date().getTime();
+      intervaloTiempo=0;
+      }
+    })
+  });
     
    async function validar(){
    
