@@ -250,6 +250,7 @@ if (tiempoFinal) {
     registrarButton.addEventListener("touchstart", handleClick);
     
     async function handleClick(event) {
+      alert("handleClick is running");
       event.preventDefault();
       await validar().then(resq => {
         if (resq) {
