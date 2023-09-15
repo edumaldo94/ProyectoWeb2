@@ -286,18 +286,30 @@ try {
 });
 
 async function valiBase() {
-const response = await fetch(`http://localhost:3001/baseDatos/${nomb.value}`);
-const data = await response.json();
-if (data.usuarioExistente) {
-  console.log("entrando")
-  mensajeError.style.display = "block";
-  mensajeError.innerHTML = 'El usuario ya existe';
-  return false;
-} else {
-  alert("asjdasd");
-  return true;
+  try {
+      const response = await fetch(`http://localhost:3001/baseDatos/${nomb.value}`);
+      
+      if (!response.ok) {
+          throw new Error('Error al realizar la solicitud');
+      }
+      
+      const data = await response.json();
+      
+      if (data.usuarioExistente) {
+          console.log("entrando")
+          mensajeError.style.display = "block";
+          mensajeError.innerHTML = 'El usuario ya existe';
+          return false;
+      } else {
+          alert("asjdasd");
+          return true;
+      }
+  } catch (error) {
+      console.error('Error al validar:', error);
+      return false;
+  }
 }
-}
+
    //DATOS PARA ENVIAR A LA BASE DE DATOS
    // USUARIO
    // PUNTUACIÓN
