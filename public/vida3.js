@@ -267,8 +267,8 @@ return false;
 mensajeError.style.display = "block";
 mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
-}else{
-  valiBase(nomb)
+}else if(valiBase()){
+  
 
 mensajeError.style.display = "none";
 formularioDiv.style.display = "none";
@@ -283,7 +283,7 @@ intervaloTiempo=0;
 
 });
 
-async function valiBase(nomb){
+async function valiBase(){
   const response = await fetch(`http://localhost:3001/baseDatos/${nomb.value}`);
   const data = await response.json();
   if (data.usuarioExistente) {
