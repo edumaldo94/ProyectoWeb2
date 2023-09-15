@@ -246,8 +246,8 @@ if (tiempoFinal) {
     const registrarButton = document.getElementById("registrar");
     const nomb=document.getElementById("nombre")
     let usu;
-    registrarButton.addEventListener("click", handleClick);
-    registrarButton.addEventListener("touchstart", handleClick);
+    formularioDiv.addEventListener("click", handleClick);
+    formularioDiv.addEventListener("touchstart", handleClick);
     
     async function handleClick(event) {
       alert("handleClick is running");
