@@ -247,7 +247,7 @@ if (tiempoFinal) {
     const nomb=document.getElementById("nombre")
     let usu;
 
-    registrarButton.addEventListener("click", async (event) => {
+    registrarButton.addEventListener("touchstart", async (event) => {
         event.preventDefault()
        
         validar().then(resq =>{
