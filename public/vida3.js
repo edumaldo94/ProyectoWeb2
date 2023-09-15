@@ -335,8 +335,6 @@ const jsonContentDiv = document.getElementById('jsonContent');
 
  function posi(){
   jsonContentDiv.innerHTML=''
- 
-
  fetch('http://localhost:3001/formComplet')
   .then(response => response.json())
   .then(data => {
@@ -351,7 +349,6 @@ const jsonContentDiv = document.getElementById('jsonContent');
       jsonContentDiv.appendChild(jsonItemDiv);
       });
       
-    
   })
   .catch(error => console.error('Error:', error));
 }
@@ -365,7 +362,7 @@ jugarDeNuevoButton.addEventListener("click",  (e) => {
 });
 
 const posBtn = document.getElementById("posicionBtn");
-posBtn.addEventListener("click",(e) =>{
+posBtn.addEventListener('click',(e) =>{
 e.preventDefault();
 
 contenidoDiv.style.display = "none";
