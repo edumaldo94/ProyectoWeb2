@@ -1,5 +1,0 @@
-services:
-- name: backend
-  env: node
-  buildCommand: node install
-    startCommand: node app.js
