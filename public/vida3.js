@@ -246,23 +246,22 @@ if (tiempoFinal) {
     const registrarButton = document.getElementById("registrar");
     const nomb=document.getElementById("nombre")
     let usu;
-
-    registrarButton.addEventListener("touchstart", async (event) => {
-        event.preventDefault()
-       
-        validar().then(resq =>{
-        if(resq){
-        formularioDiv.style.display = "none";
-        contFF.style.display = "none";
-
-        contenidoDiv.style.display = "block";
-        
-        tiempoInicio = new Date().getTime();
-        intervaloTiempo=0;
+    registrarButton.addEventListener("click", handleClick);
+    registrarButton.addEventListener("touchstart", handleClick);
+    
+    async function handleClick(event) {
+      event.preventDefault();
+      await validar().then(resq => {
+        if (resq) {
+          formularioDiv.style.display = "none";
+          contFF.style.display = "none";
+          contenidoDiv.style.display = "block";
+          tiempoInicio = new Date().getTime();
+          intervaloTiempo = 0;
         }
-      })
-    });
-
+      });
+    }
+    
    async function validar(){
    
    if (nomb.value.trim() ==='') {
