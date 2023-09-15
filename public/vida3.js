@@ -254,7 +254,7 @@ if (tiempoFinal) {
      
 
 
-registrarButton.addEventListener('click',  async(event) => {
+registrarButton.addEventListener('click',  (event) => {
   event.preventDefault()
  
 
@@ -269,7 +269,7 @@ mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
 }else{
 try {
-  const validacionExitosa = await valiBase();
+  const validacionExitosa =  valiBase();
   if (validacionExitosa) {
     mensajeError.style.display = "none";
     formularioDiv.style.display = "none";
