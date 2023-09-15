@@ -11,8 +11,8 @@ body {
  
 }
 #contFormu{
-    
-   display: flex;
+  display: none;
+  
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -42,7 +42,7 @@ body {
 /* Estilos para el formulario de registro */
 #formulario {
     
-    display: block;
+    display: none;
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto;
@@ -91,7 +91,7 @@ body {
 /* Estilos para el contenido principal */
 #contenidoSeccion {
   
-    display: none;
+    display: block;
    border-radius: 25px;
     max-width: 415px;
 border: 2px solid rgb(189, 204, 54);

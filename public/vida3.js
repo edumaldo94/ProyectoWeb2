@@ -166,7 +166,7 @@ let preguntaActual = 0;
   function mostrarSiguientePregunta() {
    
     preguntaActual++;
-    if (preguntaActual < 1) {
+    if (preguntaActual < 5) {
       //
       sig.disabled = true;
       sig.style.backgroundColor="#ac0303"
