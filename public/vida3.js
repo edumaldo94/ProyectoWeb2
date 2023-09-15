@@ -276,7 +276,7 @@ if (tiempoFinal) {
   return false;
 }
    
-  const response = await fetch(`http://localhost:3001/baseDatos/${nomb.value}`);
+  const response = await fetch(`http://localhost:3001/backend/baseDatos/${nomb.value}`);
   const data = await response.json();
   if (data.usuarioExistente) {
     console.log("entrando")
