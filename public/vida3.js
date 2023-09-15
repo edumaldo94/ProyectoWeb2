@@ -246,11 +246,11 @@ if (tiempoFinal) {
     const registrarButton = document.getElementById("registrar");
     const nomb=document.getElementById("nombre")
     let usu;
-    formularioDiv.addEventListener("click", handleClick);
+    formularioDiv.addEventListener("submit", handleClick);
     formularioDiv.addEventListener("touchstart", handleClick);
     
     async function handleClick(event) {
-      alert("handleClick is running");
+     
       event.preventDefault();
       await validar().then(resq => {
         if (resq) {
