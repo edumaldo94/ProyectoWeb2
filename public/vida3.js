@@ -244,13 +244,19 @@ if (tiempoFinal) {
     const contFF = document.getElementById("contFormu");
     const contenidoDiv = document.getElementById("contenidoSeccion");
     const registrarButton = document.getElementById("registrar");
+    const comenzarBtn = document.getElementById("comenzar");
     const nomb=document.getElementById("nombre")
     let usu;
-   registrarButton.addEventListener('click', async (event) => {
+    
+    registrarButton.addEventListener("submit",  (event) => {
+      event.preventDefault();
+     validarFormulario()
+    });
+    
+    comenzarBtn.addEventListener("click", (event) => {
       event.preventDefault()
-     alert("hola")
-      validar().then(resq =>{
-      if(resq){
+     
+    
       formularioDiv.style.display = "none";
       contFF.style.display = "none";
 
@@ -258,38 +264,46 @@ if (tiempoFinal) {
       
       tiempoInicio = new Date().getTime();
       intervaloTiempo=0;
-      }
-    })
+      
   });
-    
-   async function validar(){
-   
-   if (nomb.value.trim() ==='') {
-    mensajeError.style.display = "block";
-    mensajeError.innerHTML='Ingrese datos por favor!'
-   
-    return false;
-}else if(nomb.value.includes(' ')){
-  mensajeError.style.display = "block";
-  mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
-  return false;
-}
-   
-  const response = await fetch(`http://localhost:3001/baseDatos/${nomb.value}`);
-  const data = await response.json();
-  if (data.usuarioExistente) {
-    console.log("entrando")
-    mensajeError.style.display = "block";
-  mensajeError.innerHTML='El usuario ya existe'
-return false;
-} else {
+
  
-    mensajeError.style.display = "none";
-    return true
 
+  async function validarFormulario() {
+   
+    const nomb = document.getElementById('nombre'); // Supongo que 'nombre' es el ID del campo de usuario.
+    const mensajeError = document.getElementById('mensaje-error');
+    
+    if (nomb.value.trim() === '') {
+        mensajeError.style.display = 'block';
+        mensajeError.innerHTML = 'Ingrese datos por favor!';
+        return false;
+    } else if (nomb.value.includes(' ')) {
+        mensajeError.style.display = 'block';
+        mensajeError.innerHTML = 'Ingrese datos sin espacio por favor!';
+        return false;
+    }
+    
+    try {
+        const response = await fetch(`http://localhost:3001/baseDatos/${nomb.value}`);
+        const data = await response.json();
+        if (data.usuarioExistente) {
+            mensajeError.style.display = 'block';
+            mensajeError.innerHTML = 'El usuario ya existe';
+            return false;
+        } else {
+          alert("boton true")
+            comenzarBtn.style.backgroundColor = 'green';
+            comenzarBtn.disabled = false;
+            mensajeError.style.display = 'none';
+            return true;
+        }
+    } catch (error) {
+        console.error('Error al validar:', error);
+        return false;
+    }
 }
 
-   }
 
    //DATOS PARA ENVIAR A LA BASE DE DATOS
    // USUARIO
