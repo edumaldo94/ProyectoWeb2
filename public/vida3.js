@@ -246,7 +246,7 @@ if (tiempoFinal) {
     const registrarButton = document.getElementById("registrar");
     const nomb=document.getElementById("nombre")
     let usu;
-    document.getElementById("formulario").addEventListener("submit", async (event) => {
+   registrarButton.addEventListener('click', async (event) => {
       event.preventDefault()
      alert("hola")
       validar().then(resq =>{
