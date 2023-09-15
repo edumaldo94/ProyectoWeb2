@@ -267,7 +267,7 @@ return false;
 mensajeError.style.display = "block";
 mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
-}
+}else{
 try {
   const validacionExitosa = await valiBase();
   if (validacionExitosa) {
@@ -281,6 +281,7 @@ try {
   }
 } catch (error) {
   console.error('Error al validar:', error);
+}
 }
 });
 
