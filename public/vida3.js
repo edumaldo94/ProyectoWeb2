@@ -169,7 +169,7 @@ let preguntaActual = 0;
   function mostrarSiguientePregunta() {
    
     preguntaActual++;
-    if (preguntaActual < 1) {
+    if (preguntaActual < 10) {
       //
       sig.disabled = true;
       sig.style.backgroundColor="#ac0303"
@@ -241,7 +241,7 @@ if (tiempoFinal) {
   clearInterval(intervaloTiempo);
 }else{
   tiempoElement.textContent=`Tiempo transcurrido: ${minutos} minutos ${segundos} segundos`;
-  
+
   valorTime=Math.floor((tiempoTranscurrido/1000))
 }
 
