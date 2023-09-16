@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const tareasController = require('../controllers/obtenerDatos');
+const tareasController = require('../../controllers/obtenerDatos');
 
 router.get('/', tareasController.cargarDatosAlEmpezar);
 router.get('/formComplet', tareasController.obtenerTodasLasTareas);
