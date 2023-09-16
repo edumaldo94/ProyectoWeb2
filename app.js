@@ -11,6 +11,7 @@ app.use('/api/index', tareasRoutes);
 app.use(cors())
 
 
+
 app.use(express.urlencoded({extended: true}))
 app.use(express.json({type: "*/*"}))
 app.listen(port, ()=>{console.log(`Servidor escuchando en el puerto http://localhost:${port}`)})
