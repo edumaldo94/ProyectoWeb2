@@ -5,7 +5,8 @@ const port=3003
 const bodyParser = require('body-parser');
 app.use(express.static('public'));
 
-app.use(bodyParser.json());
+
+
 const tareasRoutes = require('./routes/index');
 app.use('/api/index', tareasRoutes);
 app.use(cors())
