@@ -36,8 +36,10 @@ let quenoserepita;
         nP[index].style.fontSize = "17px";
         let ale=Math.floor(Math.random() * data.length)
         if(pregCorrecta){
-            pregElem.innerHTML = `¿La siguiente bandera es del País ...?`;
+          pregElem.style.color="#f2f2f2"
           
+            pregElem.innerHTML = `¿La siguiente bandera es del País ...?`;
+            pregElem.style.fontSize = "17px";
             imagen.src=(data[ale].flags.png)
             quenoserepita=nP[index].textContent=data[ale].translations.spa.common
             pregCorrecta=false;
@@ -58,10 +60,11 @@ if(nP[index].textContent=== quenoserepita.textContent){
             if(pregCorrecta){
              
                 let x=data[ale].translations.spa.common
+                pregElem.style.color="#9cd879"
                 
-                
-                pregElem.innerHTML = `¿La capital de <span style="color: blue;">${x}</span> es...?`;
-               
+                pregElem.innerHTML = `¿La capital de <span style="color: #0cb306; text-shadow: 1px 1px 5px black;">${x}</span> es...?`;
+
+                pregElem.style.fontSize = "17px";
                 imagen.src=(data[ale].flags.png)
                 nP[index].textContent=data[ale].capital
                 if(nP[index].textContent===""){
@@ -166,7 +169,7 @@ let preguntaActual = 0;
   function mostrarSiguientePregunta() {
    
     preguntaActual++;
-    if (preguntaActual < 5) {
+    if (preguntaActual < 1) {
       //
       sig.disabled = true;
       sig.style.backgroundColor="#ac0303"
@@ -184,14 +187,20 @@ let preguntaActual = 0;
 imagen.style.display="none"
 pregElem.style.display="none"
 tiempoElement.style.display="none"
-contenedor.innerHTML = '<h1 style="font-size: 24px; text-align: center;">Fin del juego.</h1>';
-promeH2.innerHTML= `Tiempo promedio que tardo en responder c/p es <span style="font-size: 14px;">%${promedioTime.toFixed(2)}</span>`;
-promeH2.style.fontSize="16px"
+
+contenedor.innerHTML = '<h1 style="font-size: 24px; text-align: center; color: white; text-shadow: 1px 1px 5px black;">Fin del juego.</h1>';
+promeH2.innerHTML= `Tiempo promedio que tardo en responder c/p es <span style="font-size: 14px; color: white; text-shadow: 1px 1px 5px black;">%${promedioTime.toFixed(2)}</span>`;
+promeH2.style.fontSize="16px";
+promeH2.style.color = "white";
+promeH2.style.textShadow = "1px 1px 5px black";
 capturarTime.textContent = tiempoElement.textContent;
 capturarTime.style.fontSize = "16px";
+capturarTime.style.color = "white";
+capturarTime.style.textShadow = "1px 1px 5px black";
 contenedor.appendChild(capturarTime);
-respOkey.innerHTML = `<span style="font-size: 16px;">Respuestas Correctas</span>${puntaje}`;
-respNot.innerHTML = `<span style="font-size: 16px;">Respuestas Incorrectas</span>${cont2}`;
+
+respOkey.innerHTML = `<span style="font-size: 16px; color: white; text-shadow: 1px 1px 5px black; ">Respuestas Correctas: </span>${puntaje}`;
+respNot.innerHTML = `<span style="font-size: 16px; color: white; text-shadow: 1px 1px 5px black ">Respuestas Incorrectas: </span>${cont2}`;
 
      
 
@@ -232,6 +241,7 @@ if (tiempoFinal) {
   clearInterval(intervaloTiempo);
 }else{
   tiempoElement.textContent=`Tiempo transcurrido: ${minutos} minutos ${segundos} segundos`;
+  
   valorTime=Math.floor((tiempoTranscurrido/1000))
 }
 
@@ -250,75 +260,55 @@ if (tiempoFinal) {
     let asd=false
     
    
-  
+    registrarButton.addEventListener("click", async (event) => {
+      event.preventDefault()
      
+      validar().then(resq =>{
+      if(resq){
+      formularioDiv.style.display = "none";
+      contFF.style.display = "none";
 
+      contenidoDiv.style.display = "block";
+      
+      tiempoInicio = new Date().getTime();
+      intervaloTiempo=0;
+      }
+    })
+  });
 
-registrarButton.addEventListener('click',  (event) => {
-  event.preventDefault()
+ async function validar(){
  
-
-if (nomb.value.trim() ==='') {
-mensajeError.style.display = "block";
-mensajeError.innerHTML='Ingrese datos por favor!'
-
-return false;
+ if (nomb.value.trim() ==='') {
+  mensajeError.style.display = "block";
+  mensajeError.style.backgroundColor = "white";
+  mensajeError.innerHTML='Ingrese datos por favor!'
+ 
+  return false;
 }else if(nomb.value.includes(' ')){
 mensajeError.style.display = "block";
+mensajeError.style.backgroundColor = "white";
 mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
-}else{
-try {
-  const validacionExitosa =  valiBase();
-  if (validacionExitosa) {
-    mensajeError.style.display = "none";
-    formularioDiv.style.display = "none";
-    contFF.style.display = "none";
-    contenidoDiv.style.display = "block";
-
-    tiempoInicio = new Date().getTime();
-    intervaloTiempo = 0;
-  }
-} catch (error) {
-  console.error('Error al validar:', error);
 }
-}
-});
-
-async function valiBase() {
-  fetch('http://localhost:3001/baseDatos')
-  .then(response => response.json())
-  .then(data => {
-      data.forEach(elemento => {
-        if (elemento.usuario === nomb.value) {
-          console.log("entrando")
-          mensajeError.style.display = "block";
-        mensajeError.innerHTML='El usuario ya existe'
-      return false;
-      } else {
-       
-          mensajeError.style.display = "none";
-          return true
-      
-      }
-      })
-
-      });
-
-    
-
+ 
 const response = await fetch(`http://localhost:3001/baseDatos/${nomb.value}`);
 const data = await response.json();
 if (data.usuarioExistente) {
   console.log("entrando")
   mensajeError.style.display = "block";
-  mensajeError.innerHTML = 'El usuario ya existe';
-  return false;
+  mensajeError.style.backgroundColor = "white";
+mensajeError.innerHTML='El usuario ya existe'
+return false;
 } else {
-  alert("asjdasd");
-  return true;
+
+  mensajeError.style.display = "none";
+  return true
+
 }
-}
+ }     
+
+
+
    //DATOS PARA ENVIAR A LA BASE DE DATOS
    // USUARIO
    // PUNTUACIÓN

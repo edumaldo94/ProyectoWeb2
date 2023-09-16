@@ -144,8 +144,16 @@ width: 400px;
 .pais {
  width: 300px;
 height: 150px;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+border-radius: 2%;
 }
 
+
+#tiempo{
+  color: #ffffff;
+  text-shadow: 1px 1px 5px black;
+  font-size: 17px;
+}
 /* Estilos para los botones */
 button {
     background-color: #326ead;
@@ -206,7 +214,7 @@ button {
         background-image: linear-gradient(to top, #d030bb 0%, #596830 100%);
         display: none;
         text-align: center;
-        background-color: #748fac;
+        background-color: rgb(116, 143, 172);
         max-height: 400px;
     width: 400px;
         overflow-y: auto; /* Habilita la barra de desplazamiento vertical si es necesario */
