@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app=express()
-const port=3001
+const port=3003
 const bodyParser = require('body-parser');
 app.use(express.static('public'));
 
@@ -14,9 +14,7 @@ app.use(cors())
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json({type: "*/*"}))
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Servidor escuchando en el puerto http://localhost:${port}`)
-});
+app.listen(port, ()=>{console.log(`Servidor escuchando en el puerto http://localhost:${port}`)})
     
 
 
