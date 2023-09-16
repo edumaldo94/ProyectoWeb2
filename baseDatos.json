@@ -5,6 +5,11 @@
     "Tiempo": "0':58\""
   },
   {
+    "usuario": "fabricio",
+    "puntaje": 6,
+    "Tiempo": "0':35\""
+  },
+  {
     "usuario": "alan",
     "puntaje": 5,
     "Tiempo": "0':36\""
@@ -23,5 +28,10 @@
     "usuario": "eduardo",
     "puntaje": 3,
     "Tiempo": "1':5\""
+  },
+  {
+    "usuario": "david",
+    "puntaje": 3,
+    "Tiempo": "0':43\""
   }
 ]
