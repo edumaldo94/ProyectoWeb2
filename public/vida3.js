@@ -289,8 +289,9 @@ mensajeError.style.backgroundColor = "white";
 mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
 }
- 
+console.log("no entreee")
 const response = await fetch(`http://localhost:3001/api/index/baseDatos/${nomb.value}`);
+console.log("no entreee")
 const data = await response.json();
 if (data.usuarioExistente) {
   console.log("entrando")
