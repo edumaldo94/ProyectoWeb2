@@ -1,20 +1,25 @@
 const express = require('express');
 const cors = require('cors');
-const app=express()
-const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-app.use(cors())
-app.use(express.urlencoded({extended: true}))
+const app=express()
+const fs = require('fs');
+const port=3001
 
-app.use(express.static('public'));
-
-
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
 app.use(bodyParser.json());
-let tareasRoutes = require('./routes/index');
+app.use(cors(corsOptions))
+app.use(express.static('public'));
+const tareasRoutes = require('./routes/index');
 app.use('/api/index', tareasRoutes);
+app.use(express.urlencoded({extended: true}))
+app.use(express.json({type: "*/*"}))
 
+app.listen(port, () => {
+    console.log(`Servidor escuchando en el puerto http://localhost:${port}`)
+});
 
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`);
-  });
 
