@@ -19,7 +19,6 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json({type: "*/*"}))
 
 app.listen(port, () => {
-    console.log(`Servidor escuchando en el puerto http://localhost:${port}`)
+    console.log(`Servidor escuchando en la dirección http://192.168.1.100:${port}`);
 });
-
 

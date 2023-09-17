@@ -290,7 +290,7 @@ mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
 }
 
-const response = await fetch(`http://localhost:3001/api/index/baseDatos/${nomb.value}`);
+const response = await fetch(`http://192.168.1.100:3001/api/index/baseDatos/${nomb.value}`);
 const data = await response.json();
 
 if (data && data.usuarioExistente !== undefined) {
@@ -338,7 +338,7 @@ ppp=true;
  enviarBtn.disabled = true;
  enviarBtn.style.backgroundColor='#ac0303'
 
-fetch('http://localhost:3001/api/index/formComplet',{
+fetch('http://192.168.1.100:3001/api/index/formComplet',{
   method: 'Post',
 headers: {
 'Content-Type': 'application/json'
@@ -354,7 +354,7 @@ const jsonContentDiv = document.getElementById('jsonContent');
 
 function posi(){
 jsonContentDiv.innerHTML=''
-fetch('http://localhost:3001/api/index/formComplet')
+fetch('http://192.168.1.100:3001/api/index/formComplet')
 .then(response => response.json())
 .then(data => {
 
@@ -392,7 +392,7 @@ let podio=1;
 if(!ppp){
 
 jsonContentDiv.innerHTML=''
-fetch('http://localhost:3001/api/index/baseDatos')
+fetch('http://192.168.1.100:3001/api/index/baseDatos')
 .then(response => response.json())
 .then(data => {
     data.forEach(elemento => {
