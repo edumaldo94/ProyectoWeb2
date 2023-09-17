@@ -261,122 +261,128 @@ if (tiempoFinal) {
    
     registrarButton.addEventListener("click", async (event) => {
       event.preventDefault()
-     
+  
       validar().then(resq =>{
       if(resq){
       formularioDiv.style.display = "none";
       contFF.style.display = "none";
-
+    
       contenidoDiv.style.display = "block";
-      
+     
       tiempoInicio = new Date().getTime();
       intervaloTiempo=0;
       }
     })
+
   });
 
  async function validar(){
- 
+
  if (nomb.value.trim() ==='') {
   mensajeError.style.display = "block";
-  mensajeError.style.backgroundColor = "white";
   mensajeError.innerHTML='Ingrese datos por favor!'
  
   return false;
 }else if(nomb.value.includes(' ')){
+
 mensajeError.style.display = "block";
-mensajeError.style.backgroundColor = "white";
 mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
 }
-console.log("no entreee")
+
 const response = await fetch(`http://localhost:3001/api/index/baseDatos/${nomb.value}`);
-console.log("no entreee")
 const data = await response.json();
+
+if (data && data.usuarioExistente !== undefined) {
 if (data.usuarioExistente) {
-  console.log("entrando")
+  // El usuario ya existe
+
   mensajeError.style.display = "block";
-  mensajeError.style.backgroundColor = "white";
-mensajeError.innerHTML='El usuario ya existe'
-return false;
+  mensajeError.innerHTML = 'El usuario ya existe';
+  return false;
 } else {
-
+  // El usuario no existe
+  
   mensajeError.style.display = "none";
-  return true
-
+  return true;
 }
- }     
+} else {
+console.log('La respuesta del servidor no tiene el formato esperado');
+// Tratar el error de respuesta del servidor si es necesario
+}
 
+ }
 
-
-   //DATOS PARA ENVIAR A LA BASE DE DATOS
-   // USUARIO
-   // PUNTUACIÓN
-   // TIMPO FINAL
-   const enviarBtn=document.getElementById("env")
-   const mensajeError = document.getElementById("mensaje-error");
+ //DATOS PARA ENVIAR A LA BASE DE DATOS
+ // USUARIO
+ // PUNTUACIÓN
+ // TIMPO FINAL
+ const enviarBtn=document.getElementById("env")
+ const mensajeError = document.getElementById("mensaje-error");
 let ppp=false;
 enviarBtn.addEventListener("click",  (event)=> {
-  event.preventDefault()
-  clearInterval(intervaloTiempo);
-  let minutos = Math.floor(valorTime / 60); // Calcula los minutos
+event.preventDefault()
+clearInterval(intervaloTiempo);
+let minutos = Math.floor(valorTime / 60); // Calcula los minutos
 let segundos = valorTime % 60;
-  let formComplet={usuario: nomb.value,
-    puntaje:puntaje,
-    Tiempo:`${minutos}':${segundos}"`}
-    
-    let formJson=JSON.stringify(formComplet);
-
-   // Verificar si el usuario ya está registrado
-
- ppp=true;
-   enviarBtn.disabled = true;
-   enviarBtn.style.backgroundColor='#ac0303'
-  //console.log(formJson)
+let formComplet={usuario:nomb.value,
+  puntaje:puntaje,
+  Tiempo:`${minutos}':${segundos}"`}
   
-  fetch('http://localhost:3001/api/index/formComplet',{
-    method: 'Post',
+
+  let formJson=JSON.stringify(formComplet);
+
+ // Verificar si el usuario ya está registrado
+
+ppp=true;
+ enviarBtn.disabled = true;
+ enviarBtn.style.backgroundColor='#ac0303'
+
+fetch('http://localhost:3001/api/index/formComplet',{
+  method: 'Post',
 headers: {
-  'Content-Type': 'application/json'
+'Content-Type': 'application/json'
 },
 body:formJson
 })
 alert("El Envio Fue Un Exito")
 posi()
- 
+
 })
+
 const jsonContentDiv = document.getElementById('jsonContent');
 
- function posi(){
-  jsonContentDiv.innerHTML=''
- fetch('http://localhost:3001/api/index/formComplet')
-  .then(response => response.json())
-  .then(data => {
+function posi(){
+jsonContentDiv.innerHTML=''
+fetch('http://localhost:3001/api/index/formComplet')
+.then(response => response.json())
+.then(data => {
 
-   let podio=1;
-      data.forEach(elemento => {
-        const jsonItemDiv = document.createElement('p');
-        jsonItemDiv.classList.add('json-item');
+ let podio=1;
+    data.forEach(elemento => {
+      const jsonItemDiv = document.createElement('p');
+      jsonItemDiv.classList.add('json-item');
 
-      jsonItemDiv.innerHTML =(`Posicion: ${podio++}<br>Usuario: ${elemento.usuario}<br>Puntaje: ${elemento.puntaje},<br>Tiempo: ${elemento.Tiempo}`);
-      jsonItemDiv.style.backgroundColor='rgb(89, 130, 173)'
-      jsonContentDiv.appendChild(jsonItemDiv);
-      });
-      
-  })
-  .catch(error => console.error('Error:', error));
+    jsonItemDiv.innerHTML =(`Posicion: ${podio++}<br>Usuario: ${elemento.usuario}<br>Puntaje: ${elemento.puntaje},<br>Tiempo: ${elemento.Tiempo}`);
+    jsonItemDiv.style.backgroundColor='rgb(89, 130, 173)'
+    jsonContentDiv.appendChild(jsonItemDiv);
+    });
+    
+  
+})
+.catch(error => console.error('Error:', error));
 }
 
 const jugarDeNuevoButton = document.getElementById("jugarOtraVez");
 
 jugarDeNuevoButton.addEventListener("click",  (e) => {
-  e.preventDefault();
-  window.location.href = "index.html";
- 
+e.preventDefault();
+window.location.href = "index.html";
+
 });
 
 const posBtn = document.getElementById("posicionBtn");
-posBtn.addEventListener('click',(e) =>{
+posBtn.addEventListener("click",(e) =>{
 e.preventDefault();
 
 contenidoDiv.style.display = "none";
@@ -385,24 +391,23 @@ volBtn.style.display="block"
 let podio=1;
 if(!ppp){
 
-  jsonContentDiv.innerHTML=''
+jsonContentDiv.innerHTML=''
 fetch('http://localhost:3001/api/index/baseDatos')
-  .then(response => response.json())
-  .then(data => {
-      data.forEach(elemento => {
-        const jsonItemDiv = document.createElement('p');
-        jsonItemDiv.classList.add('json-item');
+.then(response => response.json())
+.then(data => {
+    data.forEach(elemento => {
+      const jsonItemDiv = document.createElement('p');
+      jsonItemDiv.classList.add('json-item');
 
-      jsonItemDiv.innerHTML =(`Posicion: ${podio++}<br>Usuario: ${elemento.usuario}<br>Puntaje: ${elemento.puntaje},<br>Tiempo: ${elemento.Tiempo}`);
-      jsonItemDiv.style.backgroundColor='rgb(89, 130, 173)'
-      jsonContentDiv.appendChild(jsonItemDiv);
-      })
+    jsonItemDiv.innerHTML =(`Posicion: ${podio++}<br>Usuario: ${elemento.usuario}<br>Puntaje: ${elemento.puntaje},<br>Tiempo: ${elemento.Tiempo}`);
+    jsonItemDiv.style.backgroundColor='rgb(89, 130, 173)'
+    jsonContentDiv.appendChild(jsonItemDiv);
+    })
 
-      });
+    });
 
-    }
+  }
 })
-
 
 const volBtn = document.getElementById("volverBtn");
 volBtn.addEventListener("click",(e) =>{
@@ -412,3 +417,5 @@ jsonContentDiv.style.display="none"
 volBtn.style.display="none"
 
 })
+
+
