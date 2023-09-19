@@ -289,8 +289,10 @@ mensajeError.style.display = "block";
 mensajeError.innerHTML='Ingrese datos sin espacio por favor!'
 return false;
 }
-
-const response = await fetch(`http://192.168.1.100:3001/api/index/baseDatos/${nomb.value}`);
+var urll = (window.location.hostname.includes('localhost'))
+    ? 'http://localhost:3001'
+    : 'https://209r47s3-3001.brs.devtunnels.ms';
+const response = await fetch(`${urll}/api/index/baseDatos/${nomb.value}`);
 const data = await response.json();
 
 if (data && data.usuarioExistente !== undefined) {
@@ -320,6 +322,7 @@ console.log('La respuesta del servidor no tiene el formato esperado');
  const enviarBtn=document.getElementById("env")
  const mensajeError = document.getElementById("mensaje-error");
 let ppp=false;
+
 enviarBtn.addEventListener("click",  (event)=> {
 event.preventDefault()
 clearInterval(intervaloTiempo);
@@ -338,7 +341,7 @@ ppp=true;
  enviarBtn.disabled = true;
  enviarBtn.style.backgroundColor='#ac0303'
 
-fetch('http://192.168.1.100:3001/api/index/formComplet',{
+fetch('http://localhost:3001/api/index/formComplet',{
   method: 'Post',
 headers: {
 'Content-Type': 'application/json'
@@ -353,8 +356,13 @@ posi()
 const jsonContentDiv = document.getElementById('jsonContent');
 
 function posi(){
+
 jsonContentDiv.innerHTML=''
-fetch('http://192.168.1.100:3001/api/index/formComplet')
+var urll = (window.location.hostname.includes('localhost'))
+    ? 'http://localhost:3001'
+    : 'https://209r47s3-3001.brs.devtunnels.ms';
+
+fetch(`${urll}/api/index/formComplet`)
 .then(response => response.json())
 .then(data => {
 
@@ -392,7 +400,11 @@ let podio=1;
 if(!ppp){
 
 jsonContentDiv.innerHTML=''
-fetch('http://192.168.1.100:3001/api/index/baseDatos')
+var urll = (window.location.hostname.includes('localhost'))
+    ? 'http://localhost:3001'
+    : 'https://209r47s3-3001.brs.devtunnels.ms';
+    
+fetch(` ${urll}/api/index/baseDatos`)
 .then(response => response.json())
 .then(data => {
     data.forEach(elemento => {

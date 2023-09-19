@@ -5,6 +5,16 @@
     "Tiempo": "0':58\""
   },
   {
+    "usuario": "nicolas",
+    "puntaje": 7,
+    "Tiempo": "0':39\""
+  },
+  {
+    "usuario": "erick",
+    "puntaje": 7,
+    "Tiempo": "0':44\""
+  },
+  {
     "usuario": "fabricio",
     "puntaje": 6,
     "Tiempo": "0':35\""
@@ -13,6 +23,11 @@
     "usuario": "alan",
     "puntaje": 5,
     "Tiempo": "0':36\""
+  },
+  {
+    "usuario": "mateo",
+    "puntaje": 5,
+    "Tiempo": "0':48\""
   },
   {
     "usuario": "pamela",
@@ -25,23 +40,13 @@
     "Tiempo": "1':52\""
   },
   {
-    "usuario": "eduardo",
-    "puntaje": 3,
-    "Tiempo": "1':5\""
-  },
-  {
     "usuario": "david",
     "puntaje": 3,
     "Tiempo": "0':43\""
   },
   {
-    "usuario": "Nelly",
-    "puntaje": 2,
-    "Tiempo": "0':22\""
-  },
-  {
-    "usuario": "eduardo9858",
-    "puntaje": 1,
-    "Tiempo": "0':19\""
+    "usuario": "jimena",
+    "puntaje": 3,
+    "Tiempo": "0':41\""
   }
 ]
