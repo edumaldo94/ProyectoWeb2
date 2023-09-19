@@ -291,7 +291,7 @@ return false;
 }
 var urll = (window.location.hostname.includes('localhost'))
     ? 'http://localhost:3001'
-    : 'https://209r47s3-3001.brs.devtunnels.ms';
+    : 'https://trivial-paises.onrender.com';
 const response = await fetch(`${urll}/api/index/baseDatos/${nomb.value}`);
 const data = await response.json();
 
@@ -340,8 +340,11 @@ let formComplet={usuario:nomb.value,
 ppp=true;
  enviarBtn.disabled = true;
  enviarBtn.style.backgroundColor='#ac0303'
-
-fetch('http://localhost:3001/api/index/formComplet',{
+ var urll = (window.location.hostname.includes('localhost'))
+ ? 'http://localhost:3001'
+ : 'https://trivial-paises.onrender.com';
+ 
+fetch(`${urll}/api/index/formComplet`,{
   method: 'Post',
 headers: {
 'Content-Type': 'application/json'
@@ -360,7 +363,7 @@ function posi(){
 jsonContentDiv.innerHTML=''
 var urll = (window.location.hostname.includes('localhost'))
     ? 'http://localhost:3001'
-    : 'https://209r47s3-3001.brs.devtunnels.ms';
+    : 'https://trivial-paises.onrender.com';
 
 fetch(`${urll}/api/index/formComplet`)
 .then(response => response.json())
@@ -402,7 +405,7 @@ if(!ppp){
 jsonContentDiv.innerHTML=''
 var urll = (window.location.hostname.includes('localhost'))
     ? 'http://localhost:3001'
-    : 'https://209r47s3-3001.brs.devtunnels.ms';
+    : 'https://trivial-paises.onrender.com';
     
 fetch(` ${urll}/api/index/baseDatos`)
 .then(response => response.json())
