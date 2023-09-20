@@ -330,12 +330,12 @@ let minutos = Math.floor(valorTime / 60); // Calcula los minutos
 let segundos = valorTime % 60;
 let formComplet={usuario:nomb.value,
   puntaje:puntaje,
-  Tiempo:`${minutos}':${segundos}"`}
+  Tiempo:`${minutos}:${segundos}`}
   
 
   let formJson=JSON.stringify(formComplet);
 
- // Verificar si el usuario ya está registrado
+
 
 ppp=true;
  enviarBtn.disabled = true;

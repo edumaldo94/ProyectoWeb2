@@ -1,62 +1,87 @@
 [
   {
-    "usuario": "matias",
-    "puntaje": 7,
-    "Tiempo": "0':58\""
-  },
-  {
     "usuario": "nicolas",
     "puntaje": 7,
-    "Tiempo": "0':39\""
+    "Tiempo": "0:39"
   },
   {
     "usuario": "erick",
     "puntaje": 7,
-    "Tiempo": "0':44\""
+    "Tiempo": "0:44"
+  },
+  {
+    "usuario": "matias",
+    "puntaje": 7,
+    "Tiempo": "0:58"
   },
   {
     "usuario": "fabricio",
     "puntaje": 6,
-    "Tiempo": "0':35\""
+    "Tiempo": "0:35"
+  },
+  {
+    "usuario": "jeremias",
+    "puntaje": 5,
+    "Tiempo": "0:31"
+  },
+  {
+    "usuario": "carlos",
+    "puntaje": 5,
+    "Tiempo": "0:33"
   },
   {
     "usuario": "alan",
     "puntaje": 5,
-    "Tiempo": "0':36\""
+    "Tiempo": "0:36"
   },
   {
     "usuario": "mateo",
     "puntaje": 5,
-    "Tiempo": "0':48\""
+    "Tiempo": "0:48"
   },
   {
-    "usuario": "pamela",
+    "usuario": "colo",
     "puntaje": 4,
-    "Tiempo": "0':53\""
+    "Tiempo": "0:22"
   },
   {
-    "usuario": "ana1981",
+    "usuario": "yamil",
     "puntaje": 4,
-    "Tiempo": "1':52\""
+    "Tiempo": "0:23"
+  },
+  {
+    "usuario": "julian",
+    "puntaje": 4,
+    "Tiempo": "0:25"
+  },
+  {
+    "usuario": "margarita",
+    "puntaje": 4,
+    "Tiempo": "0:26"
   },
   {
     "usuario": "Agustín",
     "puntaje": 4,
-    "Tiempo": "0':44\""
+    "Tiempo": "0:44"
   },
   {
-    "usuario": "david",
-    "puntaje": 3,
-    "Tiempo": "0':43\""
+    "usuario": "pamela",
+    "puntaje": 4,
+    "Tiempo": "0:53"
   },
   {
-    "usuario": "jimena",
+    "usuario": "enzo",
     "puntaje": 3,
-    "Tiempo": "0':41\""
+    "Tiempo": "0:20"
   },
   {
-    "usuario": "eduardo",
+    "usuario": "pedro",
     "puntaje": 3,
-    "Tiempo": "0':36\""
+    "Tiempo": "0:25"
+  },
+  {
+    "usuario": "demicheliss",
+    "puntaje": 3,
+    "Tiempo": "0:27"
   }
 ]
