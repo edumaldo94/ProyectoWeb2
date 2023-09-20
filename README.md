@@ -46,6 +46,8 @@ El servidor estará disponible en `http://localhost:3001`.
 
 
 ## 👨‍💻 Autor 👨‍💻
+Maldonado Eduardo Alberto
+DNI: 37505981
 
 - [@edumaldo94](https://github.com/edumaldo94)
 
